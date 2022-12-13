@@ -32,7 +32,7 @@ pub async fn get_items(client: &Client, list_id: i32) -> Result<Vec<TodoItem>, i
         .expect("Error getting todo items")
         .iter()
         .map(|row| TodoItem::from_row_ref(row).unwrap())
-        .collect::<vec<TodoItem>>();
+        .collect::<Vec<TodoItem>>();
 
     Ok(items)
 }

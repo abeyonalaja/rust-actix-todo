@@ -19,5 +19,5 @@ pub struct TodoItem {
     pub id: i32,
     pub title: String,
     pub checked: bool,
-    pub listed_id: i32,
+    pub list_id: i32,
 }

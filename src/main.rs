@@ -3,6 +3,7 @@ mod db;
 mod handlers;
 mod models;
 
+use crate::db::get_items;
 use crate::handlers::*;
 use crate::models::Status;
 use actix_web::web::Data;
@@ -30,6 +31,7 @@ async fn main() -> io::Result<()> {
             .app_data(Data::new(pool.clone()))
             .route("/", web::get().to(status))
             .route("/todos", web::get().to(get_todo_list))
+            .route("/todos/{list_id}/items", web::get().to(get_todo_items))
     })
     .bind(format!("{}:{}", config.server.host, config.server.port))?
     .run()
