@@ -47,7 +47,7 @@ pub async fn create_todo(client: &Client, title: String) -> Result<TodoList, io:
         .await
         .expect("Error creating todo list")
         .iter()
-        .map(|row| TodoList::From_row_ref(row).unwrap())
+        .map(|row| TodoList::from_row_ref(row).unwrap())
         .collect::<Vec<TodoList>>()
         .pop()
         .ok_or(io::Error::new(
