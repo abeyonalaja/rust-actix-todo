@@ -33,6 +33,10 @@ async fn main() -> io::Result<()> {
             .route("/todos", web::get().to(get_todo_list))
             .route("/todos", web::post().to(create_todo))
             .route("/todos/{list_id}/items", web::get().to(get_todo_items))
+            .route(
+                "/todos/{list_id}/items/{item_id}",
+                web::put().to(check_item),
+            )
     })
     .bind(format!("{}:{}", config.server.host, config.server.port))?
     .run()
